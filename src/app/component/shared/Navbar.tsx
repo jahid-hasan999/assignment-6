@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav className="border-b border-zinc-800 bg-[#0b0d0f] text-white">
+    <nav className="border-b border-zinc-800 bg-[#15171D] text-white">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
