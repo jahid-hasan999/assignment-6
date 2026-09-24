@@ -21,15 +21,11 @@ const LibraryCard = ({ user }: CardProps) => {
 
   return (
     <Link
-      href={`/workouts/${id}`}
+      href={`/library/${id}`}
       className="block bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300"
     >
       <div className="relative bg-gray-100">
-        <Image
-          src={image}
-          alt={name}
-         width={450} height={400}
-        />
+        <Image src={image} alt={name} width={450} height={400} />
       </div>
 
       <div className="p-5">
