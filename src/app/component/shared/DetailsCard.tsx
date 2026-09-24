@@ -1,6 +1,8 @@
 import { FitlogData } from '@/type/page';
 import Image from 'next/image';
 import Link from 'next/link'
+import SaveForLaterBtn from '../plan-list/SaveForLaterBtn';
+import AddPlanBtn from '../plan-list/AddPlanBtn';
 interface DetailsCardProps {
   user: FitlogData;
 }
@@ -46,14 +48,14 @@ const DetailsCard = ({ user }: DetailsCardProps) => {
             </p>
 
             <div className="mt-4 flex gap-3">
-              <span className="rounded-full bg-[#b8ff00] px-4 py-1 text-xs font-bold text-black">
-                {muscleGroups[0]}
-              </span>
+  <span className="rounded-full bg-[#b8ff00] px-4 py-1 text-xs font-bold text-black">
+    {muscleGroups[0]}
+  </span>
 
-              <span className="rounded-full bg-[#b8ff00] px-4 py-1 text-xs font-bold text-black">
-                {muscleGroups[1]}
-              </span>
-            </div>
+  <span className="rounded-full bg-[#b8ff00] px-4 py-1 text-xs font-bold text-black">
+    {muscleGroups[1]}
+  </span>
+</div>
 
             <div className="mt-5 overflow-hidden rounded-xl border border-[#252a32] bg-[#151920]">
               <div className="flex items-center justify-between border-b border-[#252a32] px-4 py-3">
@@ -137,19 +139,11 @@ const DetailsCard = ({ user }: DetailsCardProps) => {
             </div>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href={''}>
-                <button className="flex items-center gap-2 rounded-lg bg-[#b8ff00] px-5 py-3 text-xs font-bold text-black transition hover:bg-[#a8eb00]">
-                  <span>▣</span>
-                  Add to today's plan
-                </button>
-              </Link>
+             
+              <AddPlanBtn user={user}/>
 
-              <Link href="">
-                <button className="flex items-center gap-2 rounded-lg border border-[#343a44] px-5 py-3 text-xs font-semibold text-white transition hover:bg-[#181c22]">
-                  <span>♡</span>
-                  Save for later
-                </button>
-              </Link>
+             <SaveForLaterBtn user={user}/>
+             
             </div>
           </div>
         </div>
