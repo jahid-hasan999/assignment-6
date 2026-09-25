@@ -1,6 +1,6 @@
 import { FitlogData } from '@/type/page';
 import Image from 'next/image';
-import Link from 'next/link'
+
 import SaveForLaterBtn from '../plan-list/SaveForLaterBtn';
 import AddPlanBtn from '../plan-list/AddPlanBtn';
 interface DetailsCardProps {

@@ -11,7 +11,7 @@ planAdd:FitlogData[],
   setSavedIds:React.Dispatch<React.SetStateAction<FitlogData[]>>;
 }
 export const PlanContext = createContext<PlanContextProp | undefined>(
-  undefined,
+  undefined
 );
 
 
