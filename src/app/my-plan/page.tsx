@@ -73,15 +73,19 @@ const MyPlanPage = () => {
 
  
   const handleMarkDone = (id: string | number) => {
-    setDoneIds(prev => {
-      if (prev.includes(String(id))) {
-        return prev.filter(itemId => itemId !== String(id));
-      }
+    const workoutId = String(id);
+    const isCurrentlyDone = doneIds.includes(workoutId);
 
-      return [...prev, String(id)];
-    });
+    if (isCurrentlyDone) {
+      setDoneIds(prev => prev.filter(itemId => itemId !== workoutId));
+
+      toast.info('Workout marked as not done');
+    } else {
+      setDoneIds(prev => [...prev, workoutId]);
+
+      toast.success('Workout marked as done');
+    }
   };
-
   const sortedItems = [...currentItems].sort((a, b) => {
     let valueA = 0;
     let valueB = 0;
@@ -254,6 +258,7 @@ const MyPlanPage = () => {
 
                       {activeTab === 'today' && (
                         <button
+                          type="button"
                           onClick={() => handleMarkDone(item.id)}
                           className={`flex items-center gap-1 rounded-full px-4 py-2 text-[10px] font-semibold transition ${
                             isDone
@@ -262,10 +267,9 @@ const MyPlanPage = () => {
                           }`}
                         >
                           <span>✓</span>
-
                           {isDone ? 'Done' : 'Mark as Done'}
                         </button>
-                      )}
+                      )};
 
                       <button
                         onClick={() =>

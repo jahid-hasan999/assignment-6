@@ -3,7 +3,8 @@ import Link from 'next/link';
 
 const Banner = () => {
   return (
-    <section className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 py-10 md:grid-cols-2 bg-[#15171D] rounded-2xl mt-6">
+    <section className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 py-10 md:grid-cols-2 bg-[#15171D] rounded-2xl mt-6"
+    >
       {/* Left Content */}
       <div>
         <span className="text-sm font-semibold text-yellow-300 px-1.5">

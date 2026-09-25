@@ -16,8 +16,8 @@ const Footer = () => {
           <span className="text-sm font-bold tracking-wide">FITLOG</span>
         </div>
         <p>
-          © 2026 FitLog {new Date().getFullYear()} — Workout Library. Train
-          hard, log honest.
+          © {new Date().getFullYear()} FitLog — Workout Library. Train hard, log
+          honest.
         </p>
       </aside>
     </footer>

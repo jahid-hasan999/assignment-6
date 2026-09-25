@@ -4,9 +4,11 @@ import { PlanContext } from '@/context/PlanContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const context = useContext(PlanContext);
+  const pathname = usePathname();
 
   if (!context) {
     return null;
@@ -18,7 +20,6 @@ const Navbar = () => {
     <nav className="border-b border-zinc-800 bg-[#15171D] text-white">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
         {/* Logo */}
-      
         <div className="flex items-center gap-2">
           <Image
             src="/logo.png"
@@ -35,21 +36,30 @@ const Navbar = () => {
         <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
           <Link
             href="/"
-            className="rounded-full bg-[#18220d] px-4 py-1.5 text-xs font-medium text-lime-400"
+            className={`rounded-full px-4 py-1.5 text-xs font-medium transition ${
+              pathname === '/'
+                ? 'bg-[#18220d] text-lime-400'
+                : 'text-zinc-400 hover:text-white'
+            }`}
           >
             Workout
           </Link>
 
           <Link
             href="/my-plan"
-            className="rounded-full px-4 py-1.5 text-xs text-zinc-400 transition hover:text-white"
+            className={`rounded-full px-4 py-1.5 text-xs font-medium transition ${
+              pathname === '/my-plan'
+                ? 'bg-[#18220d] text-lime-400'
+                : 'text-zinc-400 hover:text-white'
+            }`}
           >
             My Plan
           </Link>
         </div>
 
+       
         <div className="flex items-center gap-5 text-xs">
-          {/* Plan */}
+         
           <Link
             href="/my-plan"
             className="flex items-center gap-2 text-zinc-300 hover:text-white"

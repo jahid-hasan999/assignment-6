@@ -10,7 +10,7 @@ const LibraryData = async () => {
   const datas: FitlogData[] = await getData();
 
   return (
-    <section className="container mx-auto px-4 py-10">
+    <section id="library" className="container mx-auto px-4 py-10">
       <h1 className="text-3xl font-extrabold tracking-wide">THE LIBRARY</h1>
       <p className="text-gray-400 mt-1 mb-6">
         Twelve lifts covering every major muscle group.
