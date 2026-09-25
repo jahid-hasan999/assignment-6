@@ -1,9 +1,11 @@
+
+
 const Loading = () => {
   return (
-    <p className="container mx-auto px-4 py-24 text-center text-gray-400">
-      Loading workouts…
-    </p>
-  );
+  <div className="py-20 text-center">
+            <p className="text-sm text-gray-400">Loading workouts…</p>
+    </div>
+  )
 };
 
 export default Loading;
