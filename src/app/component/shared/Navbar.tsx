@@ -3,12 +3,15 @@
 import { PlanContext } from '@/context/PlanContext';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const context = useContext(PlanContext);
   const pathname = usePathname();
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   if (!context) {
     return null;
@@ -18,7 +21,7 @@ const Navbar = () => {
 
   return (
     <nav className="border-b border-zinc-800 bg-[#15171D] text-white">
-      <div className="container mx-auto flex h-14 items-center justify-between px-4">
+      <div className="container mx-auto flex h-14 items-center px-4">
         {/* Logo */}
         <div className="flex items-center gap-2">
           <Image
@@ -32,8 +35,8 @@ const Navbar = () => {
           <span className="text-sm font-bold tracking-wide">FITLOG</span>
         </div>
 
-        {/* Navigation */}
-        <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
+        {/* Desktop Navigation */}
+        <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
           <Link
             href="/"
             className={`rounded-full px-4 py-1.5 text-xs font-medium transition ${
@@ -57,12 +60,12 @@ const Navbar = () => {
           </Link>
         </div>
 
-       
-        <div className="flex items-center gap-5 text-xs">
-         
+        {/* Right Side */}
+        <div className="ml-auto flex items-center gap-3 md:gap-5 text-xs">
+          {/* Plan */}
           <Link
             href="/my-plan"
-            className="flex items-center gap-2 text-zinc-300 hover:text-white"
+            className="flex items-center gap-1.5 text-zinc-300 hover:text-white"
           >
             <span>Plan</span>
 
@@ -74,7 +77,7 @@ const Navbar = () => {
           {/* Saved */}
           <Link
             href="/my-plan"
-            className="flex items-center gap-2 text-zinc-300 hover:text-white"
+            className="flex items-center gap-1.5 text-zinc-300 hover:text-white"
           >
             <span>Saved</span>
 
@@ -82,8 +85,50 @@ const Navbar = () => {
               {savedIds.length}
             </span>
           </Link>
+
+          {/* Hamburger - Mobile Only */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="rounded-md p-1 text-zinc-300 hover:bg-zinc-800 hover:text-white md:hidden"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="border-t border-zinc-800 bg-[#15171D] px-4 py-3 md:hidden">
+          <div className="flex flex-col gap-2">
+            {/* Workout */}
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className={`rounded-md px-4 py-3 text-sm ${
+                pathname === '/'
+                  ? 'bg-[#18220d] text-lime-400'
+                  : 'text-zinc-300 hover:bg-zinc-800 hover:text-white'
+              }`}
+            >
+              Workout
+            </Link>
+
+            {/* My Plan */}
+            <Link
+              href="/my-plan"
+              onClick={() => setMenuOpen(false)}
+              className={`rounded-md px-4 py-3 text-sm ${
+                pathname === '/my-plan'
+                  ? 'bg-[#18220d] text-lime-400'
+                  : 'text-zinc-300 hover:bg-zinc-800 hover:text-white'
+              }`}
+            >
+              My Plan
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

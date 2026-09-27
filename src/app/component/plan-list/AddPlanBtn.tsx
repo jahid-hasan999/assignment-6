@@ -15,12 +15,7 @@ const AddPlanBtn = ({ user }: { user: FitlogData }) => {
   const { planAdd, setPlanAdd } = context;
 
   const handleAdd = () => {
-    // Maxium5 workouts
-    if (planAdd.length >= 5) {
-      toast.error('You can add maximum 5 workouts.');
-      return;
-    }
-
+   
     // Duplicate check
     const alreadyAdded = planAdd.some(item => item.id === user.id);
 
